@@ -1,0 +1,37 @@
+# WordPress
+.DS_Store
+Thumbs.db
+
+# Archive directory (needs updates)
+archive/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.old
+*~
+
+# Archives (we don't want to version control zip files)
+*.zip
+
+# OS files
+.DS_Store
+desktop.ini
+
+# Node modules (if any)
+node_modules/
+
+# Vendor directory (if using Composer)
+vendor/
