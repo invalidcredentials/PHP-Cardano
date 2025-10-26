@@ -29,6 +29,8 @@ Generate wallets, derive keys, and sign transactions using only PHP native exten
 - ✅ **Ed25519-BIP32** (Khovratovich/Law) child key derivation
 - ✅ **Extended key signing** (kL||kR) for proper Cardano transaction signatures
 - ✅ **Pure PHP CBOR codec** for encoding/decoding transaction structures
+- ✅ **Format-agnostic signer** - works with payments, metadata, NFT mints, multi-asset transfers, staking
+- ✅ **Multi-signature ready** - generates witness sets that merge with other signers
 - ✅ **No external dependencies** - uses only PHP built-in extensions
 - ✅ **Multi-layer fallback system**: native sodium → FFI → pure PHP (BCMath)
 - ✅ **BIP39 mnemonic** generation and restoration (12-24 words)
@@ -561,21 +563,29 @@ When testing, please verify:
 
 ---
 
-## Known Issues & Roadmap
+## Transaction Types & Capabilities
 
-### Current Limitations
-- Multi-signature transactions not yet supported
-- Script (Plutus) addresses not implemented
-- Metadata attachment in transactions not supported
-- Native asset (token) handling not implemented
+The signer handles any CBOR-encoded transaction body. Since it extracts and hashes the body without interpreting its contents, it works with:
+
+- ✅ Simple ADA payments
+- ✅ Transactions with metadata (CIP-20, CIP-25)
+- ✅ NFT minting with native assets
+- ✅ Multi-asset transfers
+- ✅ Staking operations (delegation, rewards withdrawal)
+- ✅ Multi-signature workflows (when paired with transaction building APIs)
+- ✅ Policy key signing for native script minting
+
+The library generates compliant witness sets that merge with other signers. Tested with Ada Anvil API for multi-sig transaction flows.
+
+### Not Included
+
+Transaction building (UTxO selection, fee calculation, balancing) is handled by external tools. This library only signs pre-built transactions.
 
 ### Planned Features
 - [ ] CIP-30 wallet connector compatibility
-- [ ] Multi-signature transaction support
-- [ ] Transaction metadata attachment
-- [ ] Native asset/token support
+- [ ] Built-in transaction builder
 - [ ] Byron address support
-- [ ] Ledger/Trezor hardware wallet integration via FFI
+- [ ] Hardware wallet integration via FFI
 
 ---
 
@@ -601,6 +611,12 @@ A: The library uses best practices (memory zeroing, secure key derivation), but 
 
 **Q: Can I generate addresses without WordPress?**
 A: Yes, use `CardanoWalletPHP::generateWallet()` or `fromMnemonic()` in any PHP script.
+
+**Q: Does this support multi-signature transactions?**
+A: The signer produces witness sets that combine with other signers. The typical workflow: API builds unsigned transaction → this library signs with your key → send both witness sets back → API combines and submits. This pattern works for co-signing, policy signing, and any multi-party transaction scenario.
+
+**Q: Can I mint NFTs with this?**
+A: Yes. Sign with your policy key instead of your payment key - same mechanism. The API handles constructing the mint field; the signer just signs the transaction body hash. Works for any native asset minting.
 
 ---
 
