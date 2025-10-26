@@ -8,7 +8,7 @@ Generate wallets, derive keys, and sign transactions using only PHP native exten
 
 ## ⚠️ Beta Status
 
-**This library is currently in BETA.** While the core cryptographic implementations have been extensively tested and follow Cardano standards (CIP-1852, Ed25519-BIP32, Icarus derivation), we're actively seeking:
+**This library is currently in BETA.** While the core cryptographic implementations have been extensively tested and follow Cardano standards (CIP-1852, Ed25519-BIP32, Icarus derivation), the following would be valuable:
 
 - **Community testing** across different PHP environments and versions
 - **Feedback** on API design and developer experience
@@ -18,7 +18,7 @@ Generate wallets, derive keys, and sign transactions using only PHP native exten
 
 **Use with caution in production.** Always test with small amounts on preprod/testnet first.
 
-👉 **Found an issue or want to contribute?** Open an issue on GitHub - we'd love your feedback!
+👉 **Found an issue or want to contribute?** Open an issue on GitHub for any feedback!
 
 ---
 
@@ -527,12 +527,12 @@ php-cardano/
 
 ## Contributing
 
-We welcome contributions! This project is in **active development** and we need:
+Contributions are welcome! This project is in **active development** and the following are needed:
 
 ### High Priority
 - 🧪 **Test coverage** - especially across different PHP versions and environments
-- 🐛 **Bug reports** - found an edge case? Let us know!
-- 📊 **Performance benchmarks** - help us optimize for different setups
+- 🐛 **Bug reports** - found an edge case? Please report it!
+- 📊 **Performance benchmarks** - help optimize for different setups
 - 🔐 **Security reviews** - cryptographic code review from experts
 
 ### Also Welcome
@@ -582,7 +582,7 @@ When testing, please verify:
 ## FAQ
 
 **Q: Is this production-ready?**
-A: This is currently in **BETA**. Core functionality is tested and follows Cardano standards, but we recommend thorough testing in your environment before production use. Always test with small amounts on testnet first.
+A: This is currently in **BETA**. Core functionality is tested and follows Cardano standards, but thorough testing in your environment is recommended before production use. Always test with small amounts on testnet first.
 
 **Q: Why pure PHP? Aren't there better languages for crypto?**
 A: Pure PHP enables Cardano functionality in environments where installing external dependencies (Python, Node.js, Rust binaries) is difficult or impossible - shared hosting, WordPress.com, managed platforms, etc.

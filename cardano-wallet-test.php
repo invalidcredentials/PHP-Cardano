@@ -18,8 +18,8 @@ error_log('Cardano Wallet Test plugin loaded!');
 add_action('admin_menu', function() {
     error_log('Cardano Wallet Test: Adding admin menu');
     add_menu_page(
-        'Cardano Wallet Test',
-        'Wallet Test',
+        'PHP Cardano',
+        'PHP Cardano',
         'manage_options',
         'cardano-wallet-test',
         'cardano_wallet_test_page',
