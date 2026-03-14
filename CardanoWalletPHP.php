@@ -20,6 +20,8 @@
 
 require_once __DIR__ . '/Ed25519Compat.php';
 
+if ( class_exists( 'CardanoWalletPHP' ) ) return;
+
 class CardanoWalletPHP
 {
     // ---- Public API ---------------------------------------------------------

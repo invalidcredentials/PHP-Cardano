@@ -13,6 +13,8 @@
  *  - sign_extended($msg, $kL, $kR)  -> 64-byte signature (R||S)
  */
 
+if ( class_exists( 'Ed25519Compat' ) ) return;
+
 final class Ed25519Compat
 {
     private static $ready = false;

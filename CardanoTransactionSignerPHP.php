@@ -8,6 +8,8 @@
 
 require_once __DIR__ . '/Ed25519Compat.php';
 
+if ( class_exists( 'CardanoTransactionSignerPHP' ) ) return;
+
 class CardanoTransactionSignerPHP
 {
     // --- Public API ----------------------------------------------------------

@@ -23,6 +23,8 @@
  *   - Ed25519 parameters (p, d, basepoint)
  */
 
+if ( class_exists( 'Ed25519Pure' ) ) return;
+
 final class Ed25519Pure
 {
     // Prime modulus p = 2^255 - 19
